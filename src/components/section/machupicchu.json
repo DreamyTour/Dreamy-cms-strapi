@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_section_machupicchus",
+  "info": {
+    "displayName": "sectionCard"
+  },
+  "options": {},
+  "attributes": {
+    "titulo": {
+      "type": "string"
+    },
+    "limit": {
+      "type": "integer"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category.category"
+    },
+    "description": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

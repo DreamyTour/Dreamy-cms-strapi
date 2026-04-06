@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_tours_prices",
+  "info": {
+    "displayName": "price"
+  },
+  "options": {},
+  "attributes": {
+    "titulo": {
+      "type": "string"
+    },
+    "contenido": {
+      "type": "blocks"
+    }
+  },
+  "config": {}
+}

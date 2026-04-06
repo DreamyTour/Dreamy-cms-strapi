@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_tours_tabs",
+  "info": {
+    "displayName": "tab"
+  },
+  "options": {},
+  "attributes": {
+    "overview": {
+      "type": "component",
+      "component": "tours.overview",
+      "repeatable": false
+    },
+    "itinerary": {
+      "type": "component",
+      "component": "tours.itinerary",
+      "repeatable": false
+    },
+    "included": {
+      "type": "component",
+      "component": "tours.includes",
+      "repeatable": false
+    },
+    "information": {
+      "type": "component",
+      "component": "tours.information",
+      "repeatable": false
+    },
+    "price": {
+      "type": "component",
+      "component": "tours.price",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

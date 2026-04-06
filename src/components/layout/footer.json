@@ -1,0 +1,46 @@
+{
+  "collectionName": "components_layout_footers",
+  "info": {
+    "displayName": "footer"
+  },
+  "options": {},
+  "attributes": {
+    "certificaciones": {
+      "type": "component",
+      "component": "section.certifications",
+      "repeatable": true
+    },
+    "logo": {
+      "type": "component",
+      "component": "shared.logo-link",
+      "repeatable": false
+    },
+    "content": {
+      "type": "text"
+    },
+    "socialTitle": {
+      "type": "string"
+    },
+    "socialLogo": {
+      "type": "component",
+      "component": "shared.logo-link",
+      "repeatable": true
+    },
+    "destination": {
+      "type": "component",
+      "component": "shared.footer-menu",
+      "repeatable": false
+    },
+    "dreamyAbout": {
+      "type": "component",
+      "component": "shared.footer-menu",
+      "repeatable": false
+    },
+    "contact": {
+      "type": "component",
+      "component": "shared.footer-menu",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

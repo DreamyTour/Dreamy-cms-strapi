@@ -1,0 +1,119 @@
+############################
+# OS
+############################
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+.Spotlight-V100
+.Trashes
+._*
+
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+############################
+# TEMP / EDITORS
+############################
+*~
+*#
+.idea
+.vscode
+nbproject
+
+############################
+# LOGS
+############################
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+############################
+# NODE
+############################
+node_modules/
+.node_history
+
+############################
+# BUILD / CACHE
+############################
+.build/
+.cache/
+.tmp/
+dist/
+build/
+
+############################
+# ENV (CRÍTICO 🔐)
+############################
+.env
+.env.*
+
+############################
+# DATABASE
+############################
+*.db
+*.sqlite
+
+############################
+# STRAPI
+############################
+.strapi
+.strapi-updater.json
+.strapi-cloud.json
+exports
+license.txt
+
+############################
+# UPLOADS (archivos del CMS)
+############################
+public/uploads/*
+!public/uploads/.gitkeep
+
+############################
+# PACKAGE MANAGERS
+############################
+.yarn/*
+!.yarn/cache
+!.yarn/unplugged
+!.yarn/patches
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+
+############################
+# TESTS
+############################
+coverage
+
+############################
+# CACHE / MISC
+############################
+.eslintcache
+.tsbuildinfo
+
+############################
+# ARCHIVOS PESADOS / BINARIOS
+############################
+*.7z
+*.gz
+*.zip
+*.tar
+*.rar
+*.iso
+*.dmg
+
+############################
+# BINARIOS
+############################
+*.exe
+*.dll
+*.so
+*.o
+*.class
+*.jar

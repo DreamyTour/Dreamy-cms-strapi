@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_layout_top_bars",
+  "info": {
+    "displayName": "top-bar"
+  },
+  "options": {},
+  "attributes": {
+    "isVisible": {
+      "type": "boolean",
+      "default": true
+    },
+    "text": {
+      "type": "string"
+    },
+    "link": {
+      "type": "component",
+      "component": "shared.link",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

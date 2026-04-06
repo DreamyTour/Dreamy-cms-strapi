@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_tours_overviews",
+  "info": {
+    "displayName": "overview"
+  },
+  "options": {},
+  "attributes": {
+    "titulo": {
+      "type": "string"
+    },
+    "timeline": {
+      "type": "component",
+      "component": "tours.timeline",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

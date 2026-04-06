@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_tours_includes",
+  "info": {
+    "displayName": "includes"
+  },
+  "options": {},
+  "attributes": {
+    "titulo": {
+      "type": "string"
+    },
+    "contenido": {
+      "type": "blocks"
+    }
+  },
+  "config": {}
+}

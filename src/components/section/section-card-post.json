@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_section_section_card_posts",
+  "info": {
+    "displayName": "sectionCardPost"
+  },
+  "options": {},
+  "attributes": {
+    "titulo": {
+      "type": "string"
+    },
+    "limit": {
+      "type": "integer"
+    },
+    "blogs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::post.post"
+    },
+    "description": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

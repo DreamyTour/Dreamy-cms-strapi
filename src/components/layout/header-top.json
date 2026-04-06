@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_layout_header_tops",
+  "info": {
+    "displayName": "header-top"
+  },
+  "options": {},
+  "attributes": {
+    "logo": {
+      "type": "component",
+      "component": "shared.logo-link",
+      "repeatable": false
+    },
+    "headerLink": {
+      "type": "component",
+      "component": "shared.link",
+      "repeatable": true
+    },
+    "button": {
+      "type": "component",
+      "component": "shared.link",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

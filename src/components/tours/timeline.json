@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_tours_timelines",
+  "info": {
+    "displayName": "timeline"
+  },
+  "options": {},
+  "attributes": {
+    "day": {
+      "type": "string"
+    },
+    "titulo": {
+      "type": "string"
+    },
+    "itemsDay": {
+      "type": "richtext"
+    }
+  },
+  "config": {}
+}

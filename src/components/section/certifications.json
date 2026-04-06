@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_section_certifications",
+  "info": {
+    "displayName": "certifications"
+  },
+  "options": {},
+  "attributes": {
+    "premios": {
+      "type": "component",
+      "component": "shared.imagen-card",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

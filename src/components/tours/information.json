@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_tours_information",
+  "info": {
+    "displayName": "information"
+  },
+  "options": {},
+  "attributes": {
+    "titulo": {
+      "type": "string"
+    },
+    "acordeon": {
+      "type": "component",
+      "component": "tours.acordeon",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

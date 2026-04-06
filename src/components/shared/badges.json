@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_shared_badges_s",
+  "info": {
+    "displayName": "badges"
+  },
+  "options": {},
+  "attributes": {
+    "titulo": {
+      "type": "string"
+    },
+    "content": {
+      "type": "text"
+    },
+    "icono": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  },
+  "config": {}
+}
