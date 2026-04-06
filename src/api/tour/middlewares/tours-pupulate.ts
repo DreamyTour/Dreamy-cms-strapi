@@ -40,6 +40,13 @@ const populate = {
   },
 
   categories: true,
+  seo: {
+    populate: {
+      metaImage: {
+        fields: ["name", "alternativeText", "url"],
+      },
+    },
+  },
 };
 
 export default (config, { strapi }: { strapi: Core.Strapi }) => {

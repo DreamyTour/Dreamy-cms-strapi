@@ -13,6 +13,13 @@ const populate = {
       }
     }
   },
+  seo: {
+    populate: {
+      metaImage: {
+        fields: ["name", "alternativeText", "url"],
+      },
+    },
+  },
   preguntasAcordeon: true
 }
 

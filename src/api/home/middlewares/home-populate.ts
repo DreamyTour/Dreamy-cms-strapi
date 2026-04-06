@@ -46,6 +46,13 @@ const populate = {
     populate: {
       blogs: true
     }
+  },
+  seo: {
+    populate: {
+      metaImage: {
+        fields: ["name", "alternativeText", "url"],
+      },
+    },
   }
 };
 

@@ -69,7 +69,7 @@
         }
       },
       "component": "shared.seo",
-      "repeatable": true
+      "repeatable": false
     }
   }
 }
