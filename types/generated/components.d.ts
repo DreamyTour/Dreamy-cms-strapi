@@ -154,6 +154,7 @@ export interface SharedLink extends Struct.ComponentSchema {
     displayName: 'link';
   };
   attributes: {
+    badge: Schema.Attribute.String;
     isButton: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     isExternal: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     label: Schema.Attribute.String;

@@ -25,6 +25,9 @@
         "PRIMARY",
         "SECONDARY"
       ]
+    },
+    "badge": {
+      "type": "string"
     }
   },
   "config": {}
