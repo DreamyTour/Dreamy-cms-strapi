@@ -11,6 +11,7 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Plugin =>
         accessKeyId: env("CF_ACCESS_KEY_ID"),
         secretAccessKey: env("CF_ACCESS_SECRET"),
         endpoint: env("CF_ENDPOINT"),
+        region: "auto", // 🔥 AGREGA ESTA LÍNEA
         params: {
           Bucket: env("CF_BUCKET"),
         },
