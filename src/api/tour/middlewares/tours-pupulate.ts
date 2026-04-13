@@ -7,11 +7,7 @@ import type { Core } from '@strapi/strapi';
 const populate = {
   imagenDestacada: true,
 
-  badge: {
-    populate: {
-      icono: true,
-    },
-  },
+  badge: true,
 
   tab: {
     populate: {

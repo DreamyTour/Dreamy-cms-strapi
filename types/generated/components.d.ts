@@ -121,7 +121,6 @@ export interface SharedBadges extends Struct.ComponentSchema {
   };
   attributes: {
     content: Schema.Attribute.Text;
-    icono: Schema.Attribute.Media<'images'>;
     titulo: Schema.Attribute.String;
   };
 }

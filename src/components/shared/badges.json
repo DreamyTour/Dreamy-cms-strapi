@@ -10,13 +10,6 @@
     },
     "content": {
       "type": "text"
-    },
-    "icono": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images"
-      ]
     }
   },
   "config": {}
