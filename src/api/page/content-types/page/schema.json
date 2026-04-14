@@ -31,11 +31,11 @@
         }
       }
     },
-    "category": {
+    "categories": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToMany",
       "target": "api::category.category",
-      "inversedBy": "page"
+      "mappedBy": "pages"
     },
     "slug": {
       "type": "uid",

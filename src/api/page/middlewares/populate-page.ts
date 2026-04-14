@@ -5,7 +5,7 @@
 import type { Core } from '@strapi/strapi';
 
 const populate = {
-  category: true,
+  categories: true,
   video: {
     populate: {
       thumbnail: {

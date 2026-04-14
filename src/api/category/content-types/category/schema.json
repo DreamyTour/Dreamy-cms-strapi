@@ -38,11 +38,11 @@
       "target": "api::tour.tour",
       "inversedBy": "categories"
     },
-    "page": {
+    "pages": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToMany",
       "target": "api::page.page",
-      "mappedBy": "category"
+      "inversedBy": "categories"
     }
   }
 }

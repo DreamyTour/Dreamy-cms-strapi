@@ -525,7 +525,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>;
+    pages: Schema.Attribute.Relation<'manyToMany', 'api::page.page'>;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'nombre'> &
       Schema.Attribute.SetPluginOptions<{
@@ -690,7 +690,10 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
-    category: Schema.Attribute.Relation<'oneToOne', 'api::category.category'>;
+    categories: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::category.category'
+    >;
     content: Schema.Attribute.Text &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
