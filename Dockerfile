@@ -1,5 +1,5 @@
 # Stage 1: Build Environment
-FROM node:20-alpine AS build
+FROM node:22-alpine AS build
 
 # Install native dependencies required for better-sqlite3 and sharp
 RUN apk update && apk add --no-cache \
@@ -36,7 +36,7 @@ RUN npm prune --omit=dev
 # ---------------------------------------------------------
 # Stage 2: Production Environment
 # ---------------------------------------------------------
-FROM node:20-alpine
+FROM node:22-alpine
 
 # Install vips-dev as a runtime dependency for sharp
 RUN apk add --no-cache vips-dev
