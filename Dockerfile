@@ -53,6 +53,10 @@ ENV PATH=/opt/app/node_modules/.bin:$PATH
 # Set runtime environment variables
 ENV NODE_ENV=production
 
+# Create runtime directories before chown so named volume mounts
+# inherit node:node ownership on first container start
+RUN mkdir -p /opt/app/.tmp /opt/app/public/uploads
+
 # Set permissions for the node user
 RUN chown -R node:node /opt/app
 
