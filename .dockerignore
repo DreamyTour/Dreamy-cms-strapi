@@ -1,0 +1,12 @@
+.git
+.gitignore
+.dockerignore
+node_modules
+dist
+.env
+.tmp
+.strapi
+build
+.idea
+.vscode
+1
