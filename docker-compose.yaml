@@ -1,0 +1,19 @@
+services:
+  cms:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "1337:1337"
+    env_file:
+      - .env
+    volumes:
+      # Persist the SQLite database across container restarts/rebuilds
+      - strapi-data:/opt/app/.tmp
+      # Persist user-uploaded media files
+      - strapi-uploads:/opt/app/public/uploads
+
+volumes:
+  strapi-data:
+  strapi-uploads:
