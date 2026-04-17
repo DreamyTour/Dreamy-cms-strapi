@@ -637,12 +637,6 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
       }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::home.home'>;
-    paquetesBolivia: Schema.Attribute.Component<'section.machupicchu', false> &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     peruPaquetes: Schema.Attribute.Component<'section.machupicchu', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
