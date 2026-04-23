@@ -73,6 +73,20 @@ export interface SectionCertifications extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionClientGallerie extends Struct.ComponentSchema {
+  collectionName: 'components_section_client_galleries';
+  info: {
+    displayName: 'clientGallery';
+  };
+  attributes: {
+    alt: Schema.Attribute.String;
+    imagen: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+  };
+}
+
 export interface SectionHero extends Struct.ComponentSchema {
   collectionName: 'components_section_heroes';
   info: {
@@ -347,6 +361,7 @@ declare module '@strapi/strapi' {
       'layout.top-bar': LayoutTopBar;
       'section.about': SectionAbout;
       'section.certifications': SectionCertifications;
+      'section.client-gallerie': SectionClientGallerie;
       'section.hero': SectionHero;
       'section.machupicchu': SectionMachupicchu;
       'section.section-card-post': SectionSectionCardPost;

@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "client_galleries",
+  "info": {
+    "singularName": "client-gallerie",
+    "pluralName": "client-galleries",
+    "displayName": "clientGallery"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "galeria": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "section.client-gallerie",
+      "repeatable": true
+    }
+  }
+}

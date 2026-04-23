@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_section_client_galleries",
+  "info": {
+    "displayName": "clientGallery"
+  },
+  "options": {},
+  "attributes": {
+    "imagen": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "alt": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

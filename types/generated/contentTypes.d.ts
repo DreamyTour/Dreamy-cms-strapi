@@ -540,6 +540,44 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiClientGallerieClientGallerie
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'client_galleries';
+  info: {
+    displayName: 'clientGallery';
+    pluralName: 'client-galleries';
+    singularName: 'client-gallerie';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    galeria: Schema.Attribute.Component<'section.client-gallerie', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::client-gallerie.client-gallerie'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: 'globals';
   info: {
@@ -1399,6 +1437,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::category-blog.category-blog': ApiCategoryBlogCategoryBlog;
       'api::category.category': ApiCategoryCategory;
+      'api::client-gallerie.client-gallerie': ApiClientGallerieClientGallerie;
       'api::global.global': ApiGlobalGlobal;
       'api::home.home': ApiHomeHome;
       'api::page.page': ApiPagePage;
