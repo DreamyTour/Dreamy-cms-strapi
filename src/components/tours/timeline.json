@@ -12,7 +12,7 @@
       "type": "string"
     },
     "itemsDay": {
-      "type": "richtext"
+      "type": "blocks"
     }
   },
   "config": {}

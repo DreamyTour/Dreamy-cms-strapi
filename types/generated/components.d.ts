@@ -347,7 +347,7 @@ export interface ToursTimeline extends Struct.ComponentSchema {
   };
   attributes: {
     day: Schema.Attribute.String;
-    itemsDay: Schema.Attribute.RichText;
+    itemsDay: Schema.Attribute.Blocks;
     titulo: Schema.Attribute.String;
   };
 }
