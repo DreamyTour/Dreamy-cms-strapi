@@ -32,14 +32,6 @@
       },
       "targetField": "titulo"
     },
-    "content": {
-      "type": "text",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
     "imagenDestacada": {
       "type": "media",
       "pluginOptions": {
@@ -90,6 +82,14 @@
     },
     "priceTour": {
       "type": "integer",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "content": {
+      "type": "blocks",
       "pluginOptions": {
         "i18n": {
           "localized": true
