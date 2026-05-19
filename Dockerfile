@@ -24,7 +24,7 @@ WORKDIR /opt/app
 COPY package.json pnpm-lock.yaml ./
 
 # Install ALL dependencies (including devDependencies required for the build process)
-RUN pnpm install --frozen-lockfile
+RUN pnpm approve-builds && pnpm install --frozen-lockfile
 
 # Copy the rest of the application
 COPY . .
