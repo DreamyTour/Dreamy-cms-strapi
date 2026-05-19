@@ -4,6 +4,7 @@ FROM node:22-alpine AS build
 # Enable pnpm
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
+ENV PNPM_CONFIG_MINIMUM_RELEASE_AGE=0
 RUN corepack enable pnpm
 
 # Install native dependencies required for better-sqlite3 and sharp
