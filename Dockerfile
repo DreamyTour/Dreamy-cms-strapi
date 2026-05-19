@@ -1,12 +1,6 @@
 # Stage 1: Build Environment
 FROM node:22-alpine AS build
 
-# Enable pnpm
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-ENV PNPM_CONFIG_MINIMUM_RELEASE_AGE=0
-RUN corepack enable pnpm
-
 # Install native dependencies required for better-sqlite3 and sharp
 RUN apk update && apk add --no-cache \
     build-base \
@@ -22,10 +16,11 @@ RUN apk update && apk add --no-cache \
 WORKDIR /opt/app
 
 # Copy package.json and lock file to leverage Docker layer caching
-COPY package.json pnpm-lock.yaml ./
+COPY package.json package-lock.json ./
 
 # Install ALL dependencies (including devDependencies required for the build process)
-RUN pnpm approve-builds && pnpm install --frozen-lockfile
+RUN npm install
+
 
 # Copy the rest of the application
 COPY . .
@@ -34,20 +29,15 @@ COPY . .
 ENV NODE_ENV=production
 
 # Build the Strapi application
-RUN pnpm run build
+RUN npm run build
 
 # Prune development dependencies to keep the image lightweight
-RUN pnpm prune --prod
+RUN npm prune --omit=dev
 
 # ---------------------------------------------------------
 # Stage 2: Production Environment
 # ---------------------------------------------------------
 FROM node:22-alpine
-
-# Enable pnpm
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable pnpm
 
 # Install vips-dev as a runtime dependency for sharp
 RUN apk add --no-cache vips-dev
@@ -75,4 +65,4 @@ RUN chown -R node:node /opt/app
 USER node
 
 # Start the application
-CMD ["pnpm", "run", "start"]
+CMD ["npm", "run", "start"]
