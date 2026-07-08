@@ -1,4 +1,6 @@
+# ---------------------------------------------------------
 # Stage 1: Build Environment
+# ---------------------------------------------------------
 FROM node:22-alpine AS build
 
 # Install native dependencies required for better-sqlite3 and sharp
@@ -15,24 +17,30 @@ RUN apk update && apk add --no-cache \
 
 WORKDIR /opt/app
 
-# Copy package.json and lock file to leverage Docker layer caching
-COPY package.json package-lock.json ./
+# Enable Corepack and prepare pnpm 11
+RUN corepack enable && corepack prepare pnpm@latest-11 --activate
 
-# Install ALL dependencies (including devDependencies required for the build process)
-RUN npm install
+# Copy pnpm workspace files first to leverage Docker layer caching
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 
+# Optional: copy .npmrc if you use pnpm configs, registry, shamefully-hoist, etc.
+COPY .npmrc* ./
 
-# Copy the rest of the application
+# Copy the rest of the application before install
+# Important for pnpm workspaces, because local workspace packages must exist
 COPY . .
+
+# Install all dependencies, including devDependencies required for Strapi build
+RUN pnpm install --frozen-lockfile
 
 # Set environment to production before building
 ENV NODE_ENV=production
 
 # Build the Strapi application
-RUN npm run build
+RUN pnpm run build
 
 # Prune development dependencies to keep the image lightweight
-RUN npm prune --omit=dev
+RUN pnpm prune --prod
 
 # ---------------------------------------------------------
 # Stage 2: Production Environment
@@ -44,14 +52,16 @@ RUN apk add --no-cache vips-dev
 
 WORKDIR /opt/app
 
-# Copy the entire app from the build stage 
-# (which now has dev dependencies pruned and dist/ built)
+# Enable Corepack and prepare pnpm 11
+RUN corepack enable && corepack prepare pnpm@latest-11 --activate
+
+# Copy the built app from the build stage
 COPY --from=build /opt/app ./
 
-# Ensure the PATH is properly set for global node modules
+# Ensure local binaries are available
 ENV PATH=/opt/app/node_modules/.bin:$PATH
 
-# Set runtime environment variables
+# Runtime environment
 ENV NODE_ENV=production
 
 # Create runtime directories before chown so named volume mounts
@@ -61,8 +71,8 @@ RUN mkdir -p /opt/app/.tmp /opt/app/public/uploads
 # Set permissions for the node user
 RUN chown -R node:node /opt/app
 
-# Switch to standard non-root user
+# Switch to non-root user
 USER node
 
-# Start the application
-CMD ["npm", "run", "start"]
+# Start Strapi
+CMD ["pnpm", "run", "start"]
