@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_shared_map_stops",
+  "info": {
+    "displayName": "mapStops"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "duration": {
+      "type": "string"
+    },
+    "routeText": {
+      "type": "string"
+    },
+    "longitude": {
+      "type": "decimal"
+    },
+    "latitude": {
+      "type": "decimal"
+    },
+    "order": {
+      "type": "integer"
+    }
+  },
+  "config": {}
+}

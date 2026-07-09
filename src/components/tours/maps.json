@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_tours_maps",
+  "info": {
+    "displayName": "maps"
+  },
+  "options": {},
+  "attributes": {
+    "mapstops": {
+      "type": "component",
+      "component": "shared.map-stops",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

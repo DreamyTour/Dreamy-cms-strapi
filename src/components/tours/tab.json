@@ -29,6 +29,11 @@
       "type": "component",
       "component": "tours.price",
       "repeatable": false
+    },
+    "maps": {
+      "type": "component",
+      "component": "tours.maps",
+      "repeatable": false
     }
   },
   "config": {}

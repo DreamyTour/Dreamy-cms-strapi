@@ -189,6 +189,22 @@ export interface SharedLogoLink extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedMapStops extends Struct.ComponentSchema {
+  collectionName: 'components_shared_map_stops';
+  info: {
+    displayName: 'mapStops';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    duration: Schema.Attribute.String;
+    latitude: Schema.Attribute.Decimal;
+    longitude: Schema.Attribute.Decimal;
+    order: Schema.Attribute.Integer;
+    routeText: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SharedMenuItem extends Struct.ComponentSchema {
   collectionName: 'components_shared_menu_items';
   info: {
@@ -304,6 +320,16 @@ export interface ToursItinerary extends Struct.ComponentSchema {
   };
 }
 
+export interface ToursMaps extends Struct.ComponentSchema {
+  collectionName: 'components_tours_maps';
+  info: {
+    displayName: 'maps';
+  };
+  attributes: {
+    mapstops: Schema.Attribute.Component<'shared.map-stops', true>;
+  };
+}
+
 export interface ToursOverview extends Struct.ComponentSchema {
   collectionName: 'components_tours_overviews';
   info: {
@@ -335,6 +361,7 @@ export interface ToursTab extends Struct.ComponentSchema {
     included: Schema.Attribute.Component<'tours.includes', false>;
     information: Schema.Attribute.Component<'tours.information', false>;
     itinerary: Schema.Attribute.Component<'tours.itinerary', false>;
+    maps: Schema.Attribute.Component<'tours.maps', false>;
     overview: Schema.Attribute.Component<'tours.overview', false>;
     price: Schema.Attribute.Component<'tours.price', false>;
   };
@@ -370,6 +397,7 @@ declare module '@strapi/strapi' {
       'shared.imagen-card': SharedImagenCard;
       'shared.link': SharedLink;
       'shared.logo-link': SharedLogoLink;
+      'shared.map-stops': SharedMapStops;
       'shared.menu-item': SharedMenuItem;
       'shared.open-graph': SharedOpenGraph;
       'shared.seo': SharedSeo;
@@ -378,6 +406,7 @@ declare module '@strapi/strapi' {
       'tours.includes': ToursIncludes;
       'tours.information': ToursInformation;
       'tours.itinerary': ToursItinerary;
+      'tours.maps': ToursMaps;
       'tours.overview': ToursOverview;
       'tours.price': ToursPrice;
       'tours.tab': ToursTab;
