@@ -32,6 +32,14 @@
       },
       "targetField": "titulo"
     },
+    "orden": {
+      "type": "integer",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
     "imagenDestacada": {
       "type": "media",
       "pluginOptions": {

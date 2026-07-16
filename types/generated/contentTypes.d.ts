@@ -897,6 +897,12 @@ export interface ApiTourTour extends Struct.CollectionTypeSchema {
       }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::tour.tour'>;
+    orden: Schema.Attribute.Integer &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     priceTour: Schema.Attribute.Integer &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
