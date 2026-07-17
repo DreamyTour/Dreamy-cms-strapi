@@ -40,6 +40,18 @@
         }
       }
     },
+    "cardBadge": {
+      "type": "enumeration",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "enum": [
+        "best_seller",
+        "promocion"
+      ]
+    },
     "imagenDestacada": {
       "type": "media",
       "pluginOptions": {

@@ -33,11 +33,11 @@ const populate = {
 
       price: true,
 
-      maps: {
-        populate: {
-          mapstops: true,
+        maps: {
+          populate: {
+            mapstops: true,
+          },
         },
-      },
     },
   },
 
