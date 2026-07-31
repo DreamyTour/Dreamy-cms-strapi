@@ -380,7 +380,7 @@ export interface ToursTimeline extends Struct.ComponentSchema {
 }
 
 declare module '@strapi/strapi' {
-  export module Public {
+  export namespace Public {
     export interface ComponentSchemas {
       'layout.footer': LayoutFooter;
       'layout.header-top': LayoutHeaderTop;
