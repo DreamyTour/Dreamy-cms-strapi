@@ -15,7 +15,14 @@ services:
       - strapi-data:/opt/app/.tmp
       # Persist user-uploaded media files
       - strapi-uploads:/opt/app/public/uploads
+    networks:
+      - shared-network
 
 volumes:
   strapi-data:
   strapi-uploads:
+
+networks:
+  shared-network:
+    name: shared-network
+    external: true
