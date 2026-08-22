@@ -197,6 +197,7 @@ export interface SharedMapStops extends Struct.ComponentSchema {
   attributes: {
     description: Schema.Attribute.Text;
     duration: Schema.Attribute.String;
+    imagen: Schema.Attribute.Media<'images'>;
     latitude: Schema.Attribute.Decimal;
     longitude: Schema.Attribute.Decimal;
     order: Schema.Attribute.Integer;

@@ -35,7 +35,11 @@ const populate = {
 
         maps: {
           populate: {
-            mapstops: true,
+            mapstops: {
+              populate: {
+                imagen: true,
+              },
+            },
           },
         },
     },

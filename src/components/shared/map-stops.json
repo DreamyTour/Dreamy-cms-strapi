@@ -8,6 +8,13 @@
     "title": {
       "type": "string"
     },
+    "imagen": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
     "description": {
       "type": "text"
     },
