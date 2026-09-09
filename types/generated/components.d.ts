@@ -212,6 +212,7 @@ export interface SharedMenuItem extends Struct.ComponentSchema {
     displayName: 'menu-item';
   };
   attributes: {
+    imagen: Schema.Attribute.Media<'images'>;
     item: Schema.Attribute.Component<'shared.link', true>;
     link: Schema.Attribute.Component<'shared.link', false>;
   };

@@ -28,6 +28,9 @@ const populate = {
     populate: {
       menuItems: {
         populate: {
+          imagen: {
+            fields: ["name", "alternativeText", "url", "width", "height", "formats"],
+          },
           link: true,
           item: true,
         },
