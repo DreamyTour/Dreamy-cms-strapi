@@ -1,11 +1,14 @@
 // import type { Core } from '@strapi/strapi';
+import { registerTableValidation } from './extensions/table-validation';
 
 export default {
   /**
    * An asynchronous register function that runs before
    * your application is initialized.
    */
-  register(/* { strapi }: { strapi: Core.Strapi } */) {},
+  register() {
+    registerTableValidation();
+  },
 
   /**
    * An asynchronous bootstrap function that runs before

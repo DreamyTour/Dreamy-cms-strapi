@@ -7,7 +7,7 @@ type TextNode = {
   strikethrough?: true;
 };
 
-type InlineNode = TextNode | {
+export type InlineNode = TextNode | {
   type: 'link';
   url: string;
   rel: string;
@@ -15,14 +15,17 @@ type InlineNode = TextNode | {
   children: TextNode[];
 };
 
+export type TableNode = { type: 'table'; children: Array<{ type: 'table-row'; children: Array<{ type: 'table-cell'; header: boolean; children: InlineNode[] }> }> };
+
 type BlockNode =
+  | TableNode
   | { type: 'paragraph' | 'quote'; children: InlineNode[] }
   | { type: 'heading'; level: 1 | 2 | 3 | 4 | 5 | 6; children: InlineNode[] }
   | { type: 'list'; format: 'ordered' | 'unordered'; children: Array<{ type: 'list-item'; children: InlineNode[] }> };
 
 type Marks = Pick<TextNode, 'bold' | 'italic' | 'underline' | 'strikethrough'>;
 
-const blockTags = new Set(['P', 'DIV', 'SECTION', 'ARTICLE', 'MAIN', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'UL', 'OL', 'BLOCKQUOTE']);
+const blockTags = new Set(['TABLE', 'P', 'DIV', 'SECTION', 'ARTICLE', 'MAIN', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'UL', 'OL', 'BLOCKQUOTE']);
 
 function inlineNodes(node: Node, marks: Marks = {}): InlineNode[] {
   if (node.nodeType === Node.TEXT_NODE) {
@@ -76,7 +79,19 @@ function blocksFrom(container: Element): BlockNode[] {
     }
     flush();
     const tag = node.tagName;
-    if (/^H[1-6]$/.test(tag)) {
+    if (tag === 'TABLE') {
+      const rows = Array.from(node.querySelectorAll('tr')).filter(row => row.closest('table') === node);
+      const children: TableNode['children'] = rows.map(row => ({
+        type: 'table-row' as const,
+        children: Array.from(row.children).filter(cell => cell.matches('td, th')).flatMap(cell => {
+          const count = Math.min(50, Math.max(1, Number(cell.getAttribute('colspan')) || 1));
+          return Array.from({ length: count }, (_, index) => ({ type: 'table-cell' as const, header: cell.tagName === 'TH', children: index === 0 ? contentOf(cell) : [{ type: 'text' as const, text: '' }] }));
+        }),
+      })).filter(row => row.children.length);
+      const width = Math.max(0, ...children.map(row => row.children.length));
+      children.forEach(row => { while (row.children.length < width) row.children.push({ type: 'table-cell', header: false, children: [{ type: 'text', text: '' }] }); });
+      if (children.length) blocks.push({ type: 'table', children });
+    } else if (/^H[1-6]$/.test(tag)) {
       blocks.push({ type: 'heading', level: Number(tag[1]) as 1 | 2 | 3 | 4 | 5 | 6, children: contentOf(node) });
     } else if (tag === 'P') {
       blocks.push({ type: 'paragraph', children: contentOf(node) });
@@ -107,9 +122,9 @@ export function withRichHtmlPaste<T extends { insertData: (data: DataTransfer) =
     // Slate uses this format for copies within the editor. Keep its native behavior.
     if (data.getData('application/x-slate-fragment')) return originalInsertData(data);
     const html = data.getData('text/html');
-    if (!html || !/<(?:h[1-6]|strong|b|span\b[^>]*font-weight)\b/i.test(html)) return originalInsertData(data);
-    // The conversion below only covers text blocks; let Strapi handle richer embeds.
-    if (/<(?:img|table|iframe|video)\b/i.test(html)) return originalInsertData(data);
+    if (!html || !/<(?:table|a|h[1-6]|strong|b|span\b[^>]*font-weight)\b/i.test(html)) return originalInsertData(data);
+    // Let Strapi handle media embeds; our converter handles formatted text and tables.
+    if (/<(?:img|iframe|video)\b/i.test(html)) return originalInsertData(data);
     const blocks = blocksFromClipboardHtml(html);
     if (!blocks.length) return originalInsertData(data);
     editor.insertFragment(blocks);
