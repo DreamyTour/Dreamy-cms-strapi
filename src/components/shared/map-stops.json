@@ -1,13 +1,14 @@
 {
   "collectionName": "components_shared_map_stops",
   "info": {
-    "displayName": "mapStops"
+    "displayName": "Día del recorrido"
   },
   "options": {},
   "attributes": {
     "title": {
       "type": "string"
     },
+    "routePlan": {"type":"customField","customField":"global::tour-route-plan"},
     "imagen": {
       "type": "media",
       "multiple": false,
@@ -23,6 +24,13 @@
     },
     "routeText": {
       "type": "string"
+    },
+    "transportMode": {
+      "type": "enumeration",
+      "enum": ["walking", "bus", "train", "flight", "boat"]
+    },
+    "routeGeometry": {
+      "type": "json"
     },
     "longitude": {
       "type": "decimal"

@@ -11,6 +11,7 @@ const config: Core.Config.Middlewares = [
         useDefaults: true,
         directives: {
           "connect-src": ["'self'", "https:"],
+          "frame-src": ["'self'", ...(process.env.STRAPI_ADMIN_TOUR_MAP_FRONTEND_URL ? [new URL(process.env.STRAPI_ADMIN_TOUR_MAP_FRONTEND_URL).origin] : process.env.NODE_ENV !== 'production' ? ['http://localhost:4321'] : [])],
           "img-src": [
             "'self'",
             "data:",

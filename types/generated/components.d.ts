@@ -192,7 +192,7 @@ export interface SharedLogoLink extends Struct.ComponentSchema {
 export interface SharedMapStops extends Struct.ComponentSchema {
   collectionName: 'components_shared_map_stops';
   info: {
-    displayName: 'mapStops';
+    displayName: 'D\u00EDa del recorrido';
   };
   attributes: {
     description: Schema.Attribute.Text;
@@ -201,8 +201,14 @@ export interface SharedMapStops extends Struct.ComponentSchema {
     latitude: Schema.Attribute.Decimal;
     longitude: Schema.Attribute.Decimal;
     order: Schema.Attribute.Integer;
+    routeGeometry: Schema.Attribute.JSON;
+    routePlan: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<'global::tour-route-plan'>;
     routeText: Schema.Attribute.String;
     title: Schema.Attribute.String;
+    transportMode: Schema.Attribute.Enumeration<
+      ['walking', 'bus', 'train', 'flight', 'boat']
+    >;
   };
 }
 
@@ -328,6 +334,7 @@ export interface ToursMaps extends Struct.ComponentSchema {
     displayName: 'maps';
   };
   attributes: {
+    imagenRecorrido: Schema.Attribute.Media<'images'>;
     mapstops: Schema.Attribute.Component<'shared.map-stops', true>;
   };
 }

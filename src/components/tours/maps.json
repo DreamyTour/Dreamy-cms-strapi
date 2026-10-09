@@ -5,6 +5,13 @@
   },
   "options": {},
   "attributes": {
+    "imagenRecorrido": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
     "mapstops": {
       "type": "component",
       "component": "shared.map-stops",

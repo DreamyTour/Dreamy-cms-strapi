@@ -35,6 +35,7 @@ const populate = {
 
         maps: {
           populate: {
+            imagenRecorrido: true,
             mapstops: {
               populate: {
                 imagen: true,

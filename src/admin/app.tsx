@@ -7,6 +7,12 @@ export default {
     locales: ['es'],
   },
   register(app: StrapiApp) {
+    app.customFields.register({
+      name: 'tour-route-plan', type: 'json',
+      intlLabel: { id: 'tour-route-plan.label', defaultMessage: 'Recorrido del día' },
+      intlDescription: { id: 'tour-route-plan.description', defaultMessage: 'Busca destinos, elige el transporte y comprueba el recorrido en el mapa.' },
+      components: { Input: async () => import('./tour-route-input').then(module=>({default:module.default as unknown as React.ComponentType})) },
+    });
     const contentManager = app.getPlugin('content-manager') as unknown as {
       apis: {
         addRichTextBlocks: (update: (blocks: Record<string, any>) => Record<string, any>) => void;
