@@ -36,6 +36,10 @@ RUN pnpm install --frozen-lockfile
 # Set environment to production before building
 ENV NODE_ENV=production
 
+# Admin variables must be available when compiling the browser bundle.
+ARG STRAPI_ADMIN_TOUR_MAP_FRONTEND_URL
+ENV STRAPI_ADMIN_TOUR_MAP_FRONTEND_URL=${STRAPI_ADMIN_TOUR_MAP_FRONTEND_URL}
+
 # Build the Strapi application
 RUN pnpm run build
 

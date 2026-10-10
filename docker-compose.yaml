@@ -4,6 +4,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        STRAPI_ADMIN_TOUR_MAP_FRONTEND_URL: ${STRAPI_ADMIN_TOUR_MAP_FRONTEND_URL:?Configura STRAPI_ADMIN_TOUR_MAP_FRONTEND_URL en el .env del CMS}
     restart: unless-stopped
     container_name: dreamy-website-cms
     ports:

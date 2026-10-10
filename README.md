@@ -1,3 +1,24 @@
+## Editor del mapa de tours en producción
+
+En el `.env` del CMS, configura la URL de la web que sirve `/cms/map-editor`:
+
+```dotenv
+STRAPI_ADMIN_TOUR_MAP_FRONTEND_URL=https://dreamy.tours
+```
+
+Docker Compose pasa esta variable tanto al build del panel como al servidor en
+ejecución. Si cambia, reconstruye y recrea el contenedor del CMS:
+
+```sh
+docker compose up -d --build cms
+```
+
+Reiniciar el contenedor o configurar la variable solamente en el Worker de la
+web no actualiza el panel ya compilado. Si construyes la imagen sin Compose,
+pasa `--build-arg STRAPI_ADMIN_TOUR_MAP_FRONTEND_URL=https://dreamy.tours` a
+`docker build` y configura también la variable en el entorno de ejecución del CMS
+para que su política de seguridad permita cargar el iframe.
+
 # 🚀 Getting started with Strapi
 
 Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
