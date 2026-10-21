@@ -1,5 +1,58 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface CategoryTourTourRecommendation extends Struct.ComponentSchema {
+  collectionName: 'components_category_tour_recommendations';
+  info: {
+    displayName: 'tour-recommendation';
+  };
+  attributes: {
+    descripcion: Schema.Attribute.Text;
+    etiqueta: Schema.Attribute.String;
+    idealPara: Schema.Attribute.Text;
+    titulo: Schema.Attribute.String;
+    tour: Schema.Attribute.Relation<'oneToOne', 'api::tour.tour'>;
+  };
+}
+
+export interface CategoryTourTourSelector extends Struct.ComponentSchema {
+  collectionName: 'components_category_tour_selectors';
+  info: {
+    displayName: 'tour-selector';
+  };
+  attributes: {
+    descripcion: Schema.Attribute.Text;
+    recomendaciones: Schema.Attribute.Component<
+      'category-tour.tour-recommendation',
+      true
+    >;
+    titulo: Schema.Attribute.String;
+  };
+}
+
+export interface CategoryTourUsefulInfo extends Struct.ComponentSchema {
+  collectionName: 'components_category_tour_useful_infos';
+  info: {
+    displayName: 'useful-info';
+  };
+  attributes: {
+    descripcion: Schema.Attribute.Text;
+    items: Schema.Attribute.Component<'category-tour.useful-info-item', true>;
+    titulo: Schema.Attribute.String;
+  };
+}
+
+export interface CategoryTourUsefulInfoItem extends Struct.ComponentSchema {
+  collectionName: 'components_category_tour_useful_info_items';
+  info: {
+    displayName: 'useful-info-item';
+  };
+  attributes: {
+    contenido: Schema.Attribute.Blocks;
+    etiqueta: Schema.Attribute.String;
+    titulo: Schema.Attribute.String;
+  };
+}
+
 export interface LayoutFooter extends Struct.ComponentSchema {
   collectionName: 'components_layout_footers';
   info: {
@@ -391,6 +444,10 @@ export interface ToursTimeline extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export namespace Public {
     export interface ComponentSchemas {
+      'category-tour.tour-recommendation': CategoryTourTourRecommendation;
+      'category-tour.tour-selector': CategoryTourTourSelector;
+      'category-tour.useful-info': CategoryTourUsefulInfo;
+      'category-tour.useful-info-item': CategoryTourUsefulInfoItem;
       'layout.footer': LayoutFooter;
       'layout.header-top': LayoutHeaderTop;
       'layout.menu': LayoutMenu;

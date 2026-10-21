@@ -20,6 +20,16 @@ const populate = {
       },
     },
   },
+  selectorTours: {
+    populate: {
+      recomendaciones: {
+        populate: {
+          tour: { fields: ["documentId", "titulo", "slug", "locale"] },
+        },
+      },
+    },
+  },
+  informacionUtil: { populate: { items: true } },
   preguntasAcordeon: true
 }
 

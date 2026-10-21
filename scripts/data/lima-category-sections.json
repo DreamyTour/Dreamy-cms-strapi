@@ -1,0 +1,119 @@
+{
+  "selectorTours": {
+    "titulo": "¿Qué tour en Lima elegir?",
+    "descripcion": "No todos los viajeros buscan lo mismo. Te ayudamos a elegir una experiencia según el tiempo que tengas y lo que quieras descubrir en Lima.",
+    "recomendaciones": [
+      {
+        "etiqueta": "Primera visita",
+        "titulo": "Conoce lo esencial de Lima",
+        "descripcion": "Si visitas la capital por primera vez, un City Tour es una forma práctica de conocer el Centro Histórico y algunos de los lugares más representativos de la ciudad.",
+        "idealPara": "Primera visita\nPoco tiempo",
+        "tour": "j2bi54khx9tvp7kq5bdgpjg2"
+      },
+      {
+        "etiqueta": "Historia y arqueología",
+        "titulo": "Descubre Pachacámac",
+        "descripcion": "Conoce uno de los principales centros arqueológicos de la costa peruana y descubre parte de la historia prehispánica de Lima.",
+        "idealPara": "Historia\nCultura\nArqueología",
+        "tour": "j71agcbrd39z864z2b518y6p"
+      },
+      {
+        "etiqueta": "Gastronomía",
+        "titulo": "Descubre los sabores de Lima",
+        "descripcion": "Acércate a la gastronomía peruana a través de experiencias que combinan ingredientes, preparaciones y sabores representativos de la capital.",
+        "idealPara": "Gastronomía\nParejas\nViajeros curiosos",
+        "tour": "n66qydy1wrj5hkmt9celbgw8"
+      },
+      {
+        "etiqueta": "Lima de noche",
+        "titulo": "Vive Lima después del atardecer",
+        "descripcion": "Disfruta del Circuito Mágico del Agua y descubre una alternativa diferente para aprovechar una noche libre en la ciudad.",
+        "idealPara": "Parejas\nFamilias\nNoche libre",
+        "tour": "zhpvawkj5hzkketvb25z3mck"
+      }
+    ]
+  },
+  "informacionUtil": {
+    "titulo": "Información útil para tus tours en Lima",
+    "items": [
+      {
+        "etiqueta": "Duración",
+        "titulo": "¿Cuánto duran nuestros tours en Lima?",
+        "contenido": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Contamos con recorridos de medio día, experiencias nocturnas y opciones de día completo. Puedes elegir según el tiempo disponible y los lugares que quieras conocer."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Si tienes pocas horas, un City Tour en Lima puede ser una buena alternativa. Si cuentas con más tiempo, puedes visitar Pachacámac, disfrutar de una experiencia gastronómica o combinar distintas zonas de la ciudad."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "etiqueta": "Transporte",
+        "titulo": "Recojo y transporte durante nuestros tours",
+        "contenido": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Organizamos el transporte de acuerdo con cada experiencia. Algunos recorridos incluyen recojo desde hoteles ubicados en zonas seleccionadas de Lima, mientras que otros cuentan con puntos de encuentro previamente definidos."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Antes de reservar puedes revisar los servicios incluidos de cada tour o consultar con nuestro equipo según tu alojamiento."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "etiqueta": "Guías",
+        "titulo": "Guías durante nuestros tours en Lima",
+        "contenido": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Nuestros recorridos cuentan con acompañamiento profesional según el programa contratado. Buscamos que cada visita permita comprender mejor la historia, el contexto y la importancia de los lugares incluidos en el itinerario."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "etiqueta": "Entradas",
+        "titulo": "Entradas, horarios y reservas",
+        "contenido": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Algunos atractivos de Lima requieren entradas o funcionan con horarios específicos. En cada ficha de tour indicamos claramente qué ingresos están incluidos y qué servicios deben considerarse por separado."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_category_tour_recommendations",
+  "info": {
+    "displayName": "tour-recommendation"
+  },
+  "options": {},
+  "attributes": {
+    "etiqueta": {
+      "type": "string"
+    },
+    "titulo": {
+      "type": "string"
+    },
+    "descripcion": {
+      "type": "text"
+    },
+    "idealPara": {
+      "type": "text",
+      "description": "Un perfil por línea. El frontend asigna los iconos."
+    },
+    "tour": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::tour.tour"
+    }
+  }
+}

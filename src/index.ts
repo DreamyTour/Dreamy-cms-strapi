@@ -2,6 +2,7 @@
 import { registerTableValidation } from './extensions/table-validation';
 import { configureTourMapEditor } from './extensions/tour-map-editor';
 import { configureTourGeneralFields } from './extensions/tour-general-fields';
+import { configurePageEditorLayout } from './extensions/page-editor-layout';
 
 export default {
   /**
@@ -20,5 +21,6 @@ export default {
   async bootstrap({ strapi }) {
     await configureTourMapEditor(strapi);
     await configureTourGeneralFields(strapi);
+    await configurePageEditorLayout(strapi);
   },
 };

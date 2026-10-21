@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_category_tour_useful_infos",
+  "info": {
+    "displayName": "useful-info"
+  },
+  "options": {},
+  "attributes": {
+    "titulo": {
+      "type": "string"
+    },
+    "descripcion": {
+      "type": "text"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "category-tour.useful-info-item"
+    }
+  }
+}

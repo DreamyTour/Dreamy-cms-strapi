@@ -83,6 +83,26 @@
       },
       "component": "tours.acordeon",
       "repeatable": true
+    },
+    "selectorTours": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "category-tour.tour-selector",
+      "repeatable": false
+    },
+    "informacionUtil": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "category-tour.useful-info",
+      "repeatable": false
     }
   }
 }
