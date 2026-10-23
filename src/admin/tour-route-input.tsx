@@ -1,5 +1,5 @@
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
-import { useForm } from '@strapi/strapi/admin';
+import { useAuth, useForm } from '@strapi/strapi/admin';
 
 type Place={label:string;coordinates:[number,number]};
 type Plan={version:1;start:Place|null;legs:{destination:Place}[]};
@@ -25,6 +25,26 @@ const Input=forwardRef<HTMLIFrameElement,Props>(function Input({name,value,disab
  const inheritedStart=lastPlace(preceding);
  const frontend=process.env.STRAPI_ADMIN_TOUR_MAP_FRONTEND_URL || (import.meta.env.DEV?'http://localhost:4321':'');
  let origin='';try{origin=new URL(frontend).origin;}catch{}
+ const token=useAuth('TourRouteInput',state=>state.token);
+ const [access,setAccess]=useState<'loading'|'ready'|'error'>('loading');
+ const [attempt,setAttempt]=useState(0);
+ useEffect(()=>{
+  if(!origin||!token){setAccess('error');return;}
+  const controller=new AbortController();
+  const authorize=async()=>{
+   try{
+    const response=await fetch(`${origin}/api/cms/session`,{
+     method:'POST',credentials:'include',headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json'},
+     signal:controller.signal,
+    });
+    if(!response.ok)throw new Error('unauthorized');
+    if(!controller.signal.aborted)setAccess('ready');
+   }catch{if(!controller.signal.aborted)setAccess('error');}
+  };
+  void authorize();
+  const timer=window.setInterval(()=>void authorize(),120000);
+  return()=>{controller.abort();window.clearInterval(timer);};
+ },[origin,token,attempt]);
  const legacyDestination=lastPlace(current);
  const context={value,inheritedStart,legacyDestination,legacyMode:current?.transportMode,disabled:Boolean(disabled)};
  const latest=useRef({context,onChange,name,disabled});latest.current={context,onChange,name,disabled};
@@ -43,6 +63,7 @@ const Input=forwardRef<HTMLIFrameElement,Props>(function Input({name,value,disab
   window.addEventListener('message',receive);return()=>window.removeEventListener('message',receive);
  },[origin]);
  if(!origin)return <p>Configura STRAPI_ADMIN_TOUR_MAP_FRONTEND_URL en el CMS con la dirección de la web y recompila el panel para abrir el editor.</p>;
+ if(access!=='ready')return <div role="status"><p>{access==='loading'?'Abriendo editor…':'No se pudo autorizar el editor. Comprueba tu sesión del CMS y vuelve a intentarlo.'}</p>{access==='error'&&<button type="button" onClick={()=>{setAccess('loading');setAttempt(value=>value+1);}}>Reintentar</button>}</div>;
  return <div style={{width:'100%'}}><p style={{marginBottom:12,fontWeight:600}}>Recorrido del día</p><iframe ref={element=>{frame.current=element;if(typeof ref==='function')ref(element);else if(ref)ref.current=element;}} src={`${origin}/cms/map-editor`} title="Editar destinos y transportes de este día" style={{width:'100%',height:780,border:'1px solid #a5b4a9',borderRadius:12,background:'#fff'}} onLoad={()=>{setReady(false);send();}}/><p style={{marginTop:8,fontSize:12}}>Los cambios se guardan con el botón Guardar del tour. Los campos antiguos se conservan para los recorridos existentes.</p>{error&&<p role="alert">{error}</p>}</div>;
 });
 export default Input;
